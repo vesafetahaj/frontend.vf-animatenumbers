@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Gurmukhi&family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link rel = "icon" href = "..\images\workloop-website-favicon-white.png" type = "image/x-icon">
+    <title>Dashboard - Home</title>
+</head>
+<body>
+    
+
+    <div id="main">
+    
+        
+        <div class="boxcontainer">
+            <div class="box" id="box1">
+                <h3>Jobs Applied</h3>
+                <h1 id="jobsApplied">0</h1>
+            </div>
+            <div class="box" id="box2">
+                <h3>Interview Schedules</h3>
+                <h1 id="interviewSchedules">0</h1>
+            </div>
+            <div class="box" id="box3">
+                <h3>Jobs Offered</h3>
+                <h1 id="jobsOffered">0</h1>
+            </div>
+        </div>
+        
+    <script>
+    
+        function animateNumbers() {
+            var jobsApplied = 89;
+            var interviewSchedules = 28;
+            var jobsOffered = 14;
+
+            var jobsAppliedElement = document.getElementById("jobsApplied");
+            var interviewSchedulesElement = document.getElementById("interviewSchedules");
+            var jobsOfferedElement = document.getElementById("jobsOffered");
+
+            var interval = 100; 
+            var duration = 1000;
+
+            var jobsAppliedStep = jobsApplied / (duration / interval);
+            var interviewSchedulesStep = interviewSchedules / (duration / interval);
+            var jobsOfferedStep = jobsOffered / (duration / interval);
+
+            var currentJobsApplied = 0;
+            var currentInterviewSchedules = 0;
+            var currentJobsOffered = 0;
+
+            var timer = setInterval(function () {
+                currentJobsApplied += jobsAppliedStep;
+                currentInterviewSchedules += interviewSchedulesStep;
+                currentJobsOffered += jobsOfferedStep;
+
+                jobsAppliedElement.textContent = Math.round(currentJobsApplied);
+                interviewSchedulesElement.textContent = Math.round(currentInterviewSchedules);
+                jobsOfferedElement.textContent = Math.round(currentJobsOffered);
+
+                if (currentJobsApplied >= jobsApplied && currentInterviewSchedules >= interviewSchedules && 
+                currentJobsOffered >= jobsOffered) {
+                    clearInterval(timer);
+                    jobsAppliedElement.textContent = jobsApplied;
+                    interviewSchedulesElement.textContent = interviewSchedules;
+                    jobsOfferedElement.textContent = jobsOffered;
+                }
+            }, interval);
+        }
+
+        animateNumbers();
+    </script>
+</body>
+</html>
